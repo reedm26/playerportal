@@ -7,14 +7,16 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  TableBody,
 } from "@material-ui/core";
 
 class Players extends Component {
   render() {
+    const tableStyle = {
+      maxWidth: "fill",
+    };
     return (
       <>
-        <TableContainer>
+        <TableContainer style={tableStyle}>
           <Table>
             <TableHead>
               <TableRow>
@@ -25,9 +27,8 @@ class Players extends Component {
                 <TableCell>Year</TableCell>
               </TableRow>
             </TableHead>
-
             {this.props.players.map((player) => (
-              <div>
+              <div key={player.id}>
                 <PlayerInfo player={player} />
               </div>
             ))}
