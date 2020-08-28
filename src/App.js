@@ -1,8 +1,9 @@
 import React from "react";
 import "./App.css";
 import NavBar from "./Components/NavBar";
-import Players from "./Components/Players";
+import Players from "./Components/Player/Players";
 import { Component } from "react";
+import TeamCard from "./Components/Team/TeamCard";
 
 class App extends Component {
   state = {
@@ -46,6 +47,7 @@ class App extends Component {
       <div className="App">
         <NavBar />
         <Players players={this.state.players} />
+        <TeamCard />
       </div>
     );
   }
