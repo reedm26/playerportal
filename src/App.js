@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import NavBar from "./Components/NavBar";
 import Players from "./Components/Player/Players";
@@ -9,8 +9,8 @@ const buttonStyle = {
   background: "#ccc",
   margin: "4px",
 };
-class App extends Component {
-  state = {
+const App = (props) => {
+  const [playersState, setPlayersState] = useState({
     players: [
       {
         id: 1,
@@ -45,11 +45,11 @@ class App extends Component {
         year: "So",
       },
     ],
-  };
+  });
 
-  switchNameHandler = () => {
+  const switchNameHandler = () => {
     // console.log("Bang");
-    this.setState({
+    setPlayersState({
       players: [
         {
           id: 1,
@@ -62,18 +62,16 @@ class App extends Component {
       ],
     });
   };
-  render() {
-    return (
-      <div className="App">
-        <NavBar />
-        <Button style={buttonStyle} onClick={this.switchNameHandler}>
-          New Player
-        </Button>
-        <Players players={this.state.players} />
-        <TeamCard />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="App">
+      <NavBar />
+      <Button style={buttonStyle} onClick={switchNameHandler}>
+        New Player
+      </Button>
+      <Players players={playersState.players} />
+      <TeamCard />
+    </div>
+  );
+};
 
 export default App;
