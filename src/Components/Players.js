@@ -7,30 +7,33 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  Paper,
 } from "@material-ui/core";
 
 class Players extends Component {
   render() {
     const tableStyle = {
-      maxWidth: "fill",
+      background: "black",
     };
+    const textColor = {
+      color: "white",
+    };
+
     return (
       <>
-        <TableContainer style={tableStyle}>
+        <TableContainer component={Paper}>
           <Table>
-            <TableHead>
+            <TableHead style={tableStyle}>
               <TableRow>
-                <TableCell>#</TableCell>
-                <TableCell>First Name</TableCell>
-                <TableCell>Last Name</TableCell>
-                <TableCell>Position</TableCell>
-                <TableCell>Year</TableCell>
+                <TableCell style={textColor}>#</TableCell>
+                <TableCell style={textColor}>First Name</TableCell>
+                <TableCell style={textColor}>Last Name</TableCell>
+                <TableCell style={textColor}>Position</TableCell>
+                <TableCell style={textColor}>Year</TableCell>
               </TableRow>
             </TableHead>
             {this.props.players.map((player) => (
-              <div key={player.id}>
-                <PlayerInfo1 player={player} />
-              </div>
+              <PlayerInfo1 player={player} />
             ))}
           </Table>
         </TableContainer>
