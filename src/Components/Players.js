@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PlayerInfo from "./PlayerInfo";
+import PlayerInfo1 from "./PlayerInfo";
 import propTypes from "prop-types";
 import {
   TableContainer,
@@ -29,7 +29,7 @@ class Players extends Component {
             </TableHead>
             {this.props.players.map((player) => (
               <div key={player.id}>
-                <PlayerInfo player={player} />
+                <PlayerInfo1 player={player} />
               </div>
             ))}
           </Table>

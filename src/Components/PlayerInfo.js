@@ -1,34 +1,24 @@
-import React, { Component } from "react";
+import React from "react";
+import propTypes from "prop-types";
 import { TableBody, TableRow, TableCell } from "@material-ui/core";
 
-import propTypes from "prop-types";
-
-class PlayerInfo extends Component {
-  render() {
-    const {
-      id,
-      number,
-      firstName,
-      lastName,
-      position,
-      year,
-    } = this.props.player;
-
-    return (
-      <>
-        <TableBody>
-          <TableRow key={id}>
-            <TableCell>{number}</TableCell>
-            <TableCell>{firstName}</TableCell>
-            <TableCell>{lastName}</TableCell>
-            <TableCell>{position}</TableCell>
-            <TableCell>{year}</TableCell>
-          </TableRow>
-        </TableBody>
-      </>
-    );
-  }
+function PlayerInfo(props) {
+  const { id, number, firstName, lastName, position, year } = props.player;
+  return (
+    <div>
+      <TableBody>
+        <TableRow key={id}>
+          <TableCell>{number}</TableCell>
+          <TableCell>{firstName}</TableCell>
+          <TableCell>{lastName}</TableCell>
+          <TableCell>{position}</TableCell>
+          <TableCell>{year}</TableCell>
+        </TableRow>
+      </TableBody>
+    </div>
+  );
 }
+
 PlayerInfo.propTypes = {
   player: propTypes.object.isRequired,
 };
