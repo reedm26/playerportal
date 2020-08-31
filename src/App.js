@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import "./App.css";
 import NavBar from "./Components/NavBar";
 import Players from "./Components/Player/Players";
-import { Component } from "react";
+
 import TeamCard from "./Components/Team/TeamCard";
-import { TextField, Button } from "@material-ui/core";
+import { Button } from "@material-ui/core";
+import PlayerForum from "./Components/Player/PlayerForum";
 const buttonStyle = {
   background: "#ccc",
   margin: "4px",
@@ -48,7 +49,6 @@ const App = (props) => {
   });
 
   const switchNameHandler = () => {
-    // console.log("Bang");
     setPlayersState({
       players: [
         {
@@ -65,6 +65,7 @@ const App = (props) => {
   return (
     <div className="App">
       <NavBar />
+      <PlayerForum click={switchNameHandler} />
       <Button style={buttonStyle} onClick={switchNameHandler}>
         New Player
       </Button>
