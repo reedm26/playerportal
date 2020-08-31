@@ -2,14 +2,9 @@ import React, { useState } from "react";
 import "./App.css";
 import NavBar from "./Components/NavBar";
 import Players from "./Components/Player/Players";
-
 import TeamCard from "./Components/Team/TeamCard";
-import { Button } from "@material-ui/core";
 import PlayerForum from "./Components/Player/PlayerForum";
-const buttonStyle = {
-  background: "#ccc",
-  margin: "4px",
-};
+
 const App = (props) => {
   const [playersState, setPlayersState] = useState({
     players: [
@@ -48,27 +43,33 @@ const App = (props) => {
     ],
   });
 
-  const switchNameHandler = () => {
+  // const switchNameHandler = (props) => {
+  //   setPlayersState({
+  //     players: [
+  //       {
+  //         id: 1,
+  //         number: "24",
+  //         firstName: "Cole",
+  //         lastName: "Baker",
+  //         position: "Midfielder",
+  //         year: "So",
+  //       },
+  //     ],
+  //   });
+  // };
+  const formSubmitHandler = (newPlayer) => {
+    console.log(newPlayer);
+    playersState.players.push(newPlayer);
     setPlayersState({
-      players: [
-        {
-          id: 1,
-          number: "24",
-          firstName: "Cole",
-          lastName: "Baker",
-          position: "Midfielder",
-          year: "So",
-        },
-      ],
+      players: playersState.players,
     });
   };
+  console.log(playersState.players);
   return (
     <div className="App">
       <NavBar />
-      <PlayerForum click={switchNameHandler} />
-      <Button style={buttonStyle} onClick={switchNameHandler}>
-        New Player
-      </Button>
+      <PlayerForum click={formSubmitHandler} players={playersState.players} />
+
       <Players players={playersState.players} />
       <TeamCard />
     </div>

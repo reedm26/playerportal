@@ -1,5 +1,5 @@
 import React from "react";
-import PlayerInfo1 from "./PlayerInfo";
+import PlayerInfo from "./PlayerInfo";
 import propTypes from "prop-types";
 import {
   TableContainer,
@@ -38,7 +38,7 @@ function Players(props) {
             </TableRow>
           </TableHead>
           {props.players.map((player) => (
-            <PlayerInfo1 player={player} />
+            <PlayerInfo player={player} key={props.key} />
           ))}
         </Table>
       </TableContainer>

@@ -1,5 +1,5 @@
 import React from "react";
-import propTypes from "prop-types";
+// import propTypes from "prop-types";
 import {
   Card,
   CardContent,
@@ -58,8 +58,8 @@ function TeamCard(props) {
   );
 }
 
-TeamCard.propTypes = {
-  team: propTypes.array.isRequired,
-};
+// TeamCard.propTypes = {
+//   team: propTypes.array.isRequired,
+// };
 
 export default TeamCard;
