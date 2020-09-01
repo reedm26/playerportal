@@ -61,6 +61,7 @@ const App = (props) => {
       <PlayerForum click={formSubmitHandler} players={playersState.players} />
       <Players players={playersState.players} deleteplayer={deletePlayer} />
       <TeamCard />
+      <EditDialog />
     </div>
   );
 };

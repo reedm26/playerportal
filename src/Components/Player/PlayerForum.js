@@ -85,7 +85,7 @@ function PlayerForum(props) {
 }
 
 PlayerForum.propTypes = {
-  players: propTypes.array.isRequired,
+  players: propTypes.object.isRequired,
 };
 
 export default PlayerForum;

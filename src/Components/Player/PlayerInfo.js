@@ -4,6 +4,7 @@ import { TableRow, TableCell, TableBody, Fab } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import CreateIcon from "@material-ui/icons/Create";
+import EditDialog from "../EditDialog";
 
 const iconStyle = {
   margin: "2px",
@@ -16,17 +17,17 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.primary,
   },
 }));
-// const [open, setOpen] = React.useState(false);
-
-// const handleClickOpen = () => {
-//   setOpen(true);
-// // };
-
-// const handleClose = () => {
-//   setOpen(false);
-// };
 
 function PlayerInfo(props) {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   const { id, number, firstName, lastName, position, year } = props.player;
   const classes = useStyles();
   return (
@@ -52,11 +53,12 @@ function PlayerInfo(props) {
             color="primary"
             aria-label="edit"
             style={iconStyle}
-            // onClick={handleClickOpen}
+            onClick={handleClickOpen}
           >
             <CreateIcon fontSize="small" />
           </Fab>
         </TableCell>
+        <EditDialog open={open} handleClose={handleClose} />
       </TableRow>
     </TableBody>
   );
