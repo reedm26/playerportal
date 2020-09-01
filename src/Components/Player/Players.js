@@ -35,10 +35,15 @@ function Players(props) {
               <TableCell style={textColor}>Last Name</TableCell>
               <TableCell style={textColor}>Position</TableCell>
               <TableCell style={textColor}>Year</TableCell>
+              <TableCell>Edit</TableCell>
             </TableRow>
           </TableHead>
           {props.players.map((player) => (
-            <PlayerInfo player={player} key={props.key} />
+            <PlayerInfo
+              player={player}
+              key={props.id}
+              deleteplayer={props.deleteplayer}
+            />
           ))}
         </Table>
       </TableContainer>

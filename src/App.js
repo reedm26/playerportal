@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import NavBar from "./Components/NavBar";
 import Players from "./Components/Player/Players";
@@ -43,34 +43,22 @@ const App = (props) => {
     ],
   });
 
-  // const switchNameHandler = (props) => {
-  //   setPlayersState({
-  //     players: [
-  //       {
-  //         id: 1,
-  //         number: "24",
-  //         firstName: "Cole",
-  //         lastName: "Baker",
-  //         position: "Midfielder",
-  //         year: "So",
-  //       },
-  //     ],
-  //   });
-  // };
   const formSubmitHandler = (newPlayer) => {
-    console.log(newPlayer);
     playersState.players.push(newPlayer);
     setPlayersState({
       players: playersState.players,
     });
   };
-  console.log(playersState.players);
+
+  const deletePlayer = (id) => {
+    console.log(id);
+  };
   return (
     <div className="App">
       <NavBar />
       <PlayerForum click={formSubmitHandler} players={playersState.players} />
 
-      <Players players={playersState.players} />
+      <Players players={playersState.players} deleteplayer={deletePlayer} />
       <TeamCard />
     </div>
   );
