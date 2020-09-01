@@ -19,6 +19,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function PlayerInfo(props) {
+  const { id, number, firstName, lastName, position, year } = props.player;
+  const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -28,8 +30,7 @@ function PlayerInfo(props) {
   const handleClose = () => {
     setOpen(false);
   };
-  const { id, number, firstName, lastName, position, year } = props.player;
-  const classes = useStyles();
+
   return (
     <TableBody>
       <TableRow key={id}>
