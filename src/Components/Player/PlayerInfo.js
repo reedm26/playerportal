@@ -16,6 +16,15 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.primary,
   },
 }));
+// const [open, setOpen] = React.useState(false);
+
+// const handleClickOpen = () => {
+//   setOpen(true);
+// // };
+
+// const handleClose = () => {
+//   setOpen(false);
+// };
 
 function PlayerInfo(props) {
   const { id, number, firstName, lastName, position, year } = props.player;
@@ -38,7 +47,13 @@ function PlayerInfo(props) {
           >
             <DeleteForeverIcon fontSize="small" />
           </Fab>
-          <Fab size="small" color="primary" aria-label="edit" style={iconStyle}>
+          <Fab
+            size="small"
+            color="primary"
+            aria-label="edit"
+            style={iconStyle}
+            // onClick={handleClickOpen}
+          >
             <CreateIcon fontSize="small" />
           </Fab>
         </TableCell>

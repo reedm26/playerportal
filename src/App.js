@@ -4,7 +4,7 @@ import NavBar from "./Components/NavBar";
 import Players from "./Components/Player/Players";
 import TeamCard from "./Components/Team/TeamCard";
 import PlayerForum from "./Components/Player/PlayerForum";
-
+import EditDialog from "./Components/EditDialog";
 const App = (props) => {
   const [playersState, setPlayersState] = useState({
     players: [
