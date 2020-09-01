@@ -50,5 +50,4 @@ function PlayerInfo(props) {
 PlayerInfo.propTypes = {
   player: propTypes.object.isRequired,
 };
-
 export default PlayerInfo;

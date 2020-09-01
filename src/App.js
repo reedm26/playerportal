@@ -59,11 +59,9 @@ const App = (props) => {
     <div className="App">
       <NavBar />
       <PlayerForum click={formSubmitHandler} players={playersState.players} />
-
       <Players players={playersState.players} deleteplayer={deletePlayer} />
       <TeamCard />
     </div>
   );
 };
-
 export default App;
