@@ -51,7 +51,9 @@ const App = (props) => {
   };
 
   const deletePlayer = (id) => {
-    console.log(id);
+    setPlayersState({
+      players: [...playersState.players.filter((players) => players.id !== id)],
+    });
   };
   return (
     <div className="App">
