@@ -18,6 +18,7 @@ function PlayerInfo(props) {
         <TableCell>{year}</TableCell>
         <TableCell>
           <Fab
+            size="medium"
             color="secondary"
             aria-label="add"
             style={iconStyle}
@@ -25,7 +26,12 @@ function PlayerInfo(props) {
           >
             X
           </Fab>
-          <Fab color="primary" aria-label="edit" style={iconStyle}>
+          <Fab
+            size="medium"
+            color="primary"
+            aria-label="edit"
+            style={iconStyle}
+          >
             edit
           </Fab>
         </TableCell>
