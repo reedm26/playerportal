@@ -5,6 +5,7 @@ import Players from "./Components/Player/Players";
 import TeamCard from "./Components/Team/TeamCard";
 import PlayerForum from "./Components/Player/PlayerForum";
 import EditDialog from "./Components/EditDialog";
+import UsePersistedState from "./Persistent";
 
 const App = (props) => {
   const [playersState, setPlayersState] = useState({
@@ -45,17 +46,19 @@ const App = (props) => {
   });
 
   const formSubmitHandler = (newPlayer) => {
-    playersState.players.push(newPlayer);
+    const players = playersState.players;
     setPlayersState({
-      players: playersState.players,
+      players: [...players, newPlayer],
     });
   };
 
   const deletePlayer = (id) => {
+    const players = playersState.players.filter((player) => player.id !== id);
     setPlayersState({
-      players: [...playersState.players.filter((players) => players.id !== id)],
+      players: players,
     });
   };
+
   return (
     <div className="App">
       <NavBar />

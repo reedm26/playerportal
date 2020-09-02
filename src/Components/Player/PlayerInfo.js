@@ -25,10 +25,13 @@ function PlayerInfo(props) {
 
   const handleClickOpen = () => {
     setOpen(true);
+
+    console.log(props.player);
   };
 
   const handleClose = () => {
     setOpen(false);
+    console.log(props.player.id);
   };
 
   return (

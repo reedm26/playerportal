@@ -13,18 +13,46 @@ function EditDialog(props) {
   return (
     <div>
       <Dialog open={props.open} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">HI{props.id}</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
-          </DialogContentText>
           <TextField
             autoFocus
             margin="dense"
             id="name"
-            label="Email Address"
-            type="email"
+            label="#"
+            name="number"
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="First Name"
+            name="firstName"
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Last Name"
+            name="lastName"
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Position"
+            name="position"
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Year"
+            name="year"
             fullWidth
           />
         </DialogContent>
@@ -33,7 +61,7 @@ function EditDialog(props) {
             Cancel
           </Button>
           <Button onClick={props.handleClose} color="primary">
-            Subscribe
+            Submit
           </Button>
         </DialogActions>
       </Dialog>

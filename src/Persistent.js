@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-function usePersistedState(key, playersState) {
-  const [state, setPlayerState] = React.useState(
+function UsePersistedState(key, playersState) {
+  const [state, setPlayersState] = React.useState(
     () => JSON.parse(localStorage.getItem(key)) || playersState
   );
   useEffect(() => {
@@ -9,3 +9,5 @@ function usePersistedState(key, playersState) {
   }, [key, playersState]);
   return [playersState, setPlayersState];
 }
+
+export default UsePersistedState;
