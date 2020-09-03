@@ -23,15 +23,12 @@ function PlayerInfo(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (event) => {
     setOpen(true);
-
-    console.log(props.player);
   };
 
   const handleClose = () => {
     setOpen(false);
-    console.log(props.player.id);
   };
 
   return (
@@ -62,7 +59,12 @@ function PlayerInfo(props) {
             <CreateIcon fontSize="small" />
           </Fab>
         </TableCell>
-        <EditDialog open={open} handleClose={handleClose} />
+        <EditDialog
+          open={open}
+          handleClose={handleClose}
+          editPlayer={props.editPlayer}
+          player={props.player}
+        />
       </TableRow>
     </TableBody>
   );

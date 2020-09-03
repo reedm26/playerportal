@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import propTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
@@ -10,10 +10,27 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import PlayerInfo from "./Player/PlayerInfo";
 
 function EditDialog(props) {
+  const [updatedPlayer, setUpdatedPlayer] = useState(props.player);
+
+  const handleChange = (event) => {
+    setUpdatedPlayer({
+      ...updatedPlayer,
+      [event.target.name]: event.target.value,
+    });
+  };
+  const twoFunction = (updatedPlayer) => {
+    props.editPlayer(updatedPlayer);
+    props.handleClose();
+  };
+
   return (
     <div>
-      <Dialog open={props.open} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">HI{props.id}</DialogTitle>
+      <Dialog
+        open={props.open}
+        aria-labelledby="form-dialog-title"
+        onSubmit={onsubmit}
+      >
+        <DialogTitle id="form-dialog-title">HI</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
@@ -21,6 +38,7 @@ function EditDialog(props) {
             id="name"
             label="#"
             name="number"
+            onChange={(e) => handleChange(e)}
             fullWidth
           />
           <TextField
@@ -29,6 +47,7 @@ function EditDialog(props) {
             id="name"
             label="First Name"
             name="firstName"
+            onChange={(e) => handleChange(e)}
             fullWidth
           />
           <TextField
@@ -37,6 +56,7 @@ function EditDialog(props) {
             id="name"
             label="Last Name"
             name="lastName"
+            onChange={(e) => handleChange(e)}
             fullWidth
           />
           <TextField
@@ -45,6 +65,7 @@ function EditDialog(props) {
             id="name"
             label="Position"
             name="position"
+            onChange={(e) => handleChange(e)}
             fullWidth
           />
           <TextField
@@ -53,6 +74,7 @@ function EditDialog(props) {
             id="name"
             label="Year"
             name="year"
+            onChange={(e) => handleChange(e)}
             fullWidth
           />
         </DialogContent>
@@ -60,9 +82,7 @@ function EditDialog(props) {
           <Button onClick={props.handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={props.handleClose} color="primary">
-            Submit
-          </Button>
+          <Button onClick={() => twoFunction(updatedPlayer)}>Submit</Button>
         </DialogActions>
       </Dialog>
     </div>

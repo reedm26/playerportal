@@ -44,6 +44,7 @@ function Players(props) {
               player={player}
               key={props.id}
               deleteplayer={props.deleteplayer}
+              editPlayer={props.editPlayer}
             />
           ))}
         </Table>

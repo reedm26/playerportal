@@ -59,13 +59,31 @@ const App = (props) => {
     });
   };
 
+  const editPlayer = (updatedPlayer) => {
+    const player = playersState.players.filter(
+      (player) => player.id === updatedPlayer.id
+    );
+
+    const playerIndex = playersState.players.indexOf(player[0]);
+
+    let updatedPlayers = playersState.players;
+    updatedPlayers[playerIndex] = updatedPlayer;
+
+    setPlayersState({
+      players: updatedPlayers,
+    });
+  };
+
   return (
     <div className="App">
       <NavBar />
       <PlayerForum click={formSubmitHandler} players={playersState.players} />
-      <Players players={playersState.players} deleteplayer={deletePlayer} />
+      <Players
+        players={playersState.players}
+        deleteplayer={deletePlayer}
+        editPlayer={editPlayer}
+      />
       <TeamCard />
-      <EditDialog />
     </div>
   );
 };
