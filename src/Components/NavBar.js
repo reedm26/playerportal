@@ -2,8 +2,9 @@ import React, { Component } from "react";
 
 const navBarStyle = {
   background: "#421e4c",
-
+  margin: "auto",
   color: "#FFFFFF",
+  height: "75px",
 };
 class NavBar extends Component {
   render() {
