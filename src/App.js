@@ -6,6 +6,7 @@ import TeamCard from "./Components/Team/TeamCard";
 import PlayerForum from "./Components/Player/PlayerForum";
 import EditDialog from "./Components/EditDialog";
 import UsePersistedState from "./Persistent";
+import SearchPlayer from "./Components/SearchPlayer";
 
 const App = (props) => {
   const [playersState, setPlayersState] = useState({
@@ -83,6 +84,7 @@ const App = (props) => {
         deleteplayer={deletePlayer}
         editPlayer={editPlayer}
       />
+      <SearchPlayer />
       <TeamCard />
     </div>
   );
