@@ -50,7 +50,7 @@ const App = (props) => {
         year: "So",
       },
     ],
-    searchField: [],
+    searchField: "",
   });
 
   const formSubmitHandler = (newPlayer) => {
@@ -82,22 +82,24 @@ const App = (props) => {
   const [searchField, setSearchState] = useState(playersState.searchField);
   const handleSearchChange = (event) => {
     console.log("here", event.target.value);
-    setSearchState({
-      ...searchField,
-      [event.target.name]: event.target.value,
-    });
+    setSearchState(event.target.value);
   };
 
   const searchPlayer = (searchField) => {
     console.log("maybe", searchField);
     const filteredPlayer = playersState.players.filter((players) =>
-      players.firstName.toLowerCase().includes(searchField).toString()
+      players.firstName.toLowerCase().includes(searchField.toLowerCase())
     );
     console.log("filtered", filteredPlayer);
-    setSearchState({
-      searchField: filteredPlayer,
+    setPlayersState({
+      players: filteredPlayer,
     });
   };
+  // const enter = (event) => {
+  //   if (event.key === 13) {
+  //     searchPlayer();
+  //   }
+  // };
 
   return (
     <div className="App">
@@ -110,7 +112,7 @@ const App = (props) => {
       />
       {/* <SearchPlayer onSearchChange={handleSearchChange} search={searchedPlayer}/> */}
       <div>
-        <form>
+        <form type="submit">
           <TextField
             id="outlined-basic"
             label="search..."
@@ -118,9 +120,11 @@ const App = (props) => {
             name="searchField"
             style={searchStyle}
             onChange={handleSearchChange}
+
+            // onKeyDown={(e) => enter(e)}
           ></TextField>
           <Button
-            onClick={() => searchPlayer(searchField)}
+            onClick={(e) => searchPlayer(searchField)}
             color="primary"
             style={searchStyle}
           >
