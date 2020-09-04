@@ -18,7 +18,7 @@ function EditDialog(props) {
       [event.target.name]: event.target.value,
     });
   };
-  const twoFunction = (updatedPlayer) => {
+  const submitPlayer = (updatedPlayer) => {
     props.editPlayer(updatedPlayer);
     props.handleClose();
   };
@@ -82,7 +82,7 @@ function EditDialog(props) {
           <Button onClick={props.handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={() => twoFunction(updatedPlayer)}>Submit</Button>
+          <Button onClick={() => submitPlayer(updatedPlayer)}>Submit</Button>
         </DialogActions>
       </Dialog>
     </div>

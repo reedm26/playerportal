@@ -6,7 +6,13 @@ import TeamCard from "./Components/Team/TeamCard";
 import PlayerForum from "./Components/Player/PlayerForum";
 import EditDialog from "./Components/EditDialog";
 import UsePersistedState from "./Persistent";
-import SearchPlayer from "./Components/SearchPlayer";
+// import SearchPlayer from "./Components/SearchPlayer";
+import { Button, TextField } from "@material-ui/core";
+
+const searchStyle = {
+  float: "right",
+  margin: "6px",
+};
 
 const App = (props) => {
   const [playersState, setPlayersState] = useState({
@@ -64,14 +70,29 @@ const App = (props) => {
     const player = playersState.players.filter(
       (player) => player.id === updatedPlayer.id
     );
-
     const playerIndex = playersState.players.indexOf(player[0]);
-
     let updatedPlayers = playersState.players;
     updatedPlayers[playerIndex] = updatedPlayer;
-
     setPlayersState({
       players: updatedPlayers,
+    });
+  };
+
+  const searchPlayer = (searchedPlayer) => {
+    console.log("maybe", searchedPlayer);
+    const players = playersState.players.filter((players) =>
+      players.firstName
+        .toLowerCase()
+        .includes(searchPlayer.firstName.toLowerCase())
+    );
+  };
+  const [searchedPlayer, setSearchState] = useState(playersState.players);
+  const handleSearchChange = (event) => {
+    // console.log("here", event.target.value);
+    console.log("players", JSON.stringify(searchedPlayer, null, 2));
+    setSearchState({
+      ...searchedPlayer,
+      [event.target.name]: event.target.value,
     });
   };
 
@@ -84,7 +105,19 @@ const App = (props) => {
         deleteplayer={deletePlayer}
         editPlayer={editPlayer}
       />
-      <SearchPlayer />
+      {/* <SearchPlayer onSearchChange={handleSearchChange} search={searchedPlayer}/> */}
+      <div>
+        <form onSubmit={searchPlayer}>
+          <TextField
+            id="outlined-basic"
+            label="search..."
+            variant="outlined"
+            name="searchedPlayer"
+            style={searchStyle}
+            onChange={handleSearchChange}
+          ></TextField>
+        </form>
+      </div>
       <TeamCard />
     </div>
   );
