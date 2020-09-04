@@ -50,6 +50,7 @@ const App = (props) => {
         year: "So",
       },
     ],
+    searchField: [],
   });
 
   const formSubmitHandler = (newPlayer) => {
@@ -78,21 +79,23 @@ const App = (props) => {
     });
   };
 
-  const searchPlayer = (searchedPlayer) => {
-    console.log("maybe", searchedPlayer);
-    const players = playersState.players.filter((players) =>
-      players.firstName
-        .toLowerCase()
-        .includes(searchPlayer.firstName.toLowerCase())
-    );
-  };
-  const [searchedPlayer, setSearchState] = useState(playersState.players);
+  const [searchField, setSearchState] = useState(playersState.searchField);
   const handleSearchChange = (event) => {
-    // console.log("here", event.target.value);
-    console.log("players", JSON.stringify(searchedPlayer, null, 2));
+    console.log("here", event.target.value);
     setSearchState({
-      ...searchedPlayer,
+      ...searchField,
       [event.target.name]: event.target.value,
+    });
+  };
+
+  const searchPlayer = (searchField) => {
+    console.log("maybe", searchField);
+    const filteredPlayer = playersState.players.filter((players) =>
+      players.firstName.toLowerCase().includes(searchField).toString()
+    );
+    console.log("filtered", filteredPlayer);
+    setSearchState({
+      searchField: filteredPlayer,
     });
   };
 
@@ -107,15 +110,22 @@ const App = (props) => {
       />
       {/* <SearchPlayer onSearchChange={handleSearchChange} search={searchedPlayer}/> */}
       <div>
-        <form onSubmit={searchPlayer}>
+        <form>
           <TextField
             id="outlined-basic"
             label="search..."
             variant="outlined"
-            name="searchedPlayer"
+            name="searchField"
             style={searchStyle}
             onChange={handleSearchChange}
           ></TextField>
+          <Button
+            onClick={() => searchPlayer(searchField)}
+            color="primary"
+            style={searchStyle}
+          >
+            Search
+          </Button>
         </form>
       </div>
       <TeamCard />
