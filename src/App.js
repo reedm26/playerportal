@@ -6,7 +6,7 @@ import TeamCard from "./Components/Team/TeamCard";
 import PlayerForum from "./Components/Player/PlayerForum";
 import EditDialog from "./Components/EditDialog";
 import UsePersistedState from "./Persistent";
-// import SearchPlayer from "./Components/SearchPlayer";
+import SearchPlayer from "./Components/SearchPlayer";
 import { Button, TextField } from "@material-ui/core";
 
 const searchStyle = {
@@ -78,7 +78,6 @@ const App = (props) => {
       players: updatedPlayers,
     });
   };
-
   const [searchField, setSearchState] = useState(playersState.searchField);
   const handleSearchChange = (event) => {
     console.log("here", event.target.value);
@@ -100,7 +99,6 @@ const App = (props) => {
   //     searchPlayer();
   //   }
   // };
-
   return (
     <div className="App">
       <NavBar />
@@ -110,28 +108,12 @@ const App = (props) => {
         deleteplayer={deletePlayer}
         editPlayer={editPlayer}
       />
-      {/* <SearchPlayer onSearchChange={handleSearchChange} search={searchedPlayer}/> */}
-      <div>
-        <form type="submit">
-          <TextField
-            id="outlined-basic"
-            label="search..."
-            variant="outlined"
-            name="searchField"
-            style={searchStyle}
-            onChange={handleSearchChange}
+      <SearchPlayer
+        onSearchChange={handleSearchChange}
+        search={searchPlayer}
+        player={searchField}
+      />
 
-            // onKeyDown={(e) => enter(e)}
-          ></TextField>
-          <Button
-            onClick={(e) => searchPlayer(searchField)}
-            color="primary"
-            style={searchStyle}
-          >
-            Search
-          </Button>
-        </form>
-      </div>
       <TeamCard />
     </div>
   );

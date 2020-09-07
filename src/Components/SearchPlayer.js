@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Button, TextField } from "@material-ui/core";
+import PlayerInfo from "./Player/PlayerInfo";
 
 const searchStyle = {
   float: "right",
   margin: "6px",
 };
 function SearchPlayer(props) {
-  const { search } = props;
+  const [searchField, setSearchState] = useState(props.player);
+  // const { search } = props;
   return (
     <div>
       <form>
@@ -15,12 +17,19 @@ function SearchPlayer(props) {
           id="outlined-basic"
           label="search..."
           variant="outlined"
-          name="searchedPlayer"
+          name="searchField"
           style={searchStyle}
-          // onChange={onSearchChange}
+          onChange={props.onSearchChange}
+
+          // onKeyDown={(e) => enter(e)}
+        ></TextField>
+        <Button
+          onClick={(e) => props.search(props.player)}
+          color="primary"
+          style={searchStyle}
         >
-          {search}
-        </TextField>
+          Search
+        </Button>
       </form>
     </div>
   );
