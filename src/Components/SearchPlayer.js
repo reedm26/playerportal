@@ -9,7 +9,13 @@ const searchStyle = {
 };
 function SearchPlayer(props) {
   const [searchField, setSearchState] = useState(props.player);
-  // const { search } = props;
+
+  const enter = (event) => {
+    if (event.key === 13) {
+      props.search(props.player);
+    }
+  };
+
   return (
     <div>
       <form>
@@ -27,6 +33,7 @@ function SearchPlayer(props) {
           onClick={(e) => props.search(props.player)}
           color="primary"
           style={searchStyle}
+          name={props.enter}
         >
           Search
         </Button>

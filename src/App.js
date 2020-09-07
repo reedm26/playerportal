@@ -94,11 +94,7 @@ const App = (props) => {
       players: filteredPlayer,
     });
   };
-  // const enter = (event) => {
-  //   if (event.key === 13) {
-  //     searchPlayer();
-  //   }
-  // };
+
   return (
     <div className="App">
       <NavBar />
