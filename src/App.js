@@ -80,16 +80,14 @@ const App = (props) => {
   };
   const [searchField, setSearchState] = useState(playersState.searchField);
   const handleSearchChange = (event) => {
-    console.log("here", event.target.value);
     setSearchState(event.target.value);
   };
 
   const searchPlayer = (searchField) => {
-    console.log("maybe", searchField);
     const filteredPlayer = playersState.players.filter((players) =>
       players.firstName.toLowerCase().includes(searchField.toLowerCase())
     );
-    console.log("filtered", filteredPlayer);
+
     setPlayersState({
       players: filteredPlayer,
     });
